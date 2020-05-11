@@ -9,11 +9,22 @@ app.get("/", function(req, res) {
 // "/bye" => "Goodbye!"
 app.get("/bye", function(req, res) {
     res.send("Goodbye!")
+});
+
+app.get("/speak/:animalName", function(req, res) {
+    var sounds = {
+        pig: "Oink",
+        cow: "Moo",
+        dog: "Woof Woof!",
+        cat: "Meowww"
+    }
+    var name = req.params.animalName.toLowerCase();
+    res.send("The " + name + " says '" + sounds[name] + "'");
 })
 
 app.get("*", function(req, res) {
     res.send("URL does not exist on this server!!")
-})
+});
 
 
 // Tell express to listen for requests (start server)
